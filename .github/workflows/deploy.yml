@@ -43,5 +43,5 @@ jobs:
               --name movimentacoes \
               --network=rede \
               -e URL=${{ secrets.URL }} \
-              -e URL=${{ secrets.DB_URL }} \
+              -e DB_URL=${{ secrets.DB_URL }} \
               youcancallmegus/movimentacoes-ci:${{ github.sha }}
