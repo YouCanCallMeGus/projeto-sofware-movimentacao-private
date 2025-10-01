@@ -5,19 +5,6 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.x'
-    - name: Run Python script with secrets
-      env:
-        URL: ${{ secrets.URL }} 
-      run: |
-            python app.py
   deploy:
     runs-on: ubuntu-latest
 
@@ -55,4 +42,5 @@ jobs:
             docker run -d -p 8081:5000 \
               --name movimentacoes \
               --network=rede \
+              -e URL=${{ secrets.URL }} \
               youcancallmegus/movimentacoes-ci:${{ github.sha }}
