@@ -1,6 +1,5 @@
 name: Deploy AWS
 
-
 on:
   push:
     branches: [ "main" ]
@@ -17,7 +16,8 @@ jobs:
     - name: Run Python script with secrets
       env:
         URL: ${{ secrets.URL }} 
-        
+      run: |
+            python app.py
   deploy:
     runs-on: ubuntu-latest
 
